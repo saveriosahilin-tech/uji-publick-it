@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1a1a1a" />
+    <meta name="description" content="Kenali Gaza Akhtar Rahadian, keterampilan, proyek, dan informasi kontaknya." />
+    <title>GazaAR — Website</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --green: #d0e7d0;
+        --ink: #1a1a1a;
+        --card: #222522;
+        --muted: #c5c8c5;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 24px;
+      }
+
+      body {
+        margin: 0;
+        background: var(--ink);
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible {
+        outline: 2px solid var(--green);
+        outline-offset: 4px;
+      }
+
+      .hero {
+        position: relative;
+        display: flex;
+        min-height: 100svh;
+        flex-direction: column;
+        overflow: hidden;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.58)), url("assets/bromo-sunrise.png");
+        background-position: center 48%;
+        background-size: cover;
+      }
+
+      .site-header {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+      }
+
+      .navigation {
+        display: flex;
+        width: min(100% - 48px, 1440px);
+        min-height: 82px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        margin: 0 auto;
+      }
+
+      .brand {
+        flex: 0 0 auto;
+        color: var(--green);
+        font-size: 40px;
+        font-weight: 700;
+        letter-spacing: -2px;
+        line-height: 1;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: clamp(20px, 3vw, 48px);
+        margin-left: auto;
+      }
+
+      .nav-links a {
+        font-size: 15px;
+        font-weight: 700;
+        transition: color 160ms ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--green);
+      }
+
+      .search-form {
+        display: flex;
+        flex: 0 1 340px;
+        min-width: 220px;
+        height: 44px;
+        overflow: hidden;
+        border: 1px solid rgba(208, 231, 208, 0.8);
+        border-radius: 7px;
+      }
+
+      .search-form input {
+        width: 100%;
+        min-width: 0;
+        border: 0;
+        padding: 0 12px;
+        background: rgba(15, 17, 15, 0.34);
+        color: #fff;
+        font: inherit;
+      }
+
+      .search-form button,
+      .project-button,
+      .email-button {
+        border: 0;
+        background: var(--green);
+        color: #111;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .search-form button {
+        flex: 0 0 92px;
+      }
+
+      .menu-toggle {
+        display: none;
+        width: 44px;
+        height: 42px;
+        flex: 0 0 auto;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        border: 1px solid rgba(208, 231, 208, 0.6);
+        border-radius: 6px;
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .menu-toggle span {
+        width: 19px;
+        height: 2px;
+        background: #fff;
+      }
+
+      .hero-content {
+        width: min(100% - 48px, 1440px);
+        margin: auto;
+        padding: 72px 0 120px;
+      }
+
+      h1 {
+        max-width: 680px;
+        margin: 0 0 24px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(48px, 5vw, 70px);
+        font-weight: 700;
+        line-height: 1.12;
+      }
+
+      .hero-copy {
+        max-width: 900px;
+        margin: 0;
+        padding-bottom: 28px;
+        color: #f4f4f4;
+        font-size: clamp(15px, 1.3vw, 19px);
+        letter-spacing: 0.25px;
+        line-height: 1.8;
+      }
+
+      .project-button,
+      .email-button {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 25px;
+        border-radius: 7px;
+        font-size: 16px;
+        transition: transform 160ms ease, background 160ms ease;
+      }
+
+      .project-button:hover,
+      .email-button:hover {
+        transform: translateY(-2px);
+        background: #e2f1e2;
+      }
+
+      .section {
+        width: min(100% - 48px, 1160px);
+        margin: 0 auto;
+        padding: 88px 0;
+        text-align: center;
+      }
+
+      .section-title {
+        margin: 0 0 42px;
+        color: var(--green);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(34px, 4vw, 44px);
+        line-height: 1.2;
+      }
+
+      .skill-grid,
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .skill-card,
+      .project-card {
+        min-height: 190px;
+        padding: 30px 24px;
+        border: 1px solid rgba(208, 231, 208, 0.12);
+        border-radius: 9px;
+        background: var(--card);
+      }
+
+      .skill-card h3,
+      .project-card h3 {
+        margin: 0 0 14px;
+        color: var(--green);
+        font-size: 21px;
+      }
+
+      .skill-card p,
+      .project-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.75;
+      }
+
+      .project-section {
+        padding-top: 44px;
+      }
+
+      .project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .project-card {
+        min-height: 180px;
+      }
+
+      .contact {
+        padding: 42px 24px;
+        background: #111;
+        text-align: center;
+      }
+
+      .contact p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .contact p + p {
+        margin-top: 8px;
+      }
+
+      .email-button {
+        min-height: 42px;
+        margin-top: 20px;
+        font-size: 14px;
+      }
+
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        clip-path: inset(50%);
+      }
+
+      @media (max-width: 1000px) {
+        .navigation {
+          gap: 22px;
+        }
+
+        .brand {
+          font-size: 34px;
+        }
+
+        .nav-links {
+          gap: 20px;
+        }
+
+        .search-form {
+          flex-basis: 250px;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .navigation {
+          width: min(100% - 36px, 600px);
+          min-height: 72px;
+          gap: 14px;
+        }
+
+        .brand {
+          font-size: 32px;
+        }
+
+        .menu-toggle {
+          display: flex;
+          margin-left: auto;
+        }
+
+        .nav-links {
+          position: absolute;
+          top: 72px;
+          right: 0;
+          left: 0;
+          display: none;
+          align-items: stretch;
+          gap: 0;
+          padding: 8px 18px 18px;
+          background: rgba(20, 22, 20, 0.97);
+        }
+
+        .menu-open .nav-links {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .nav-links a {
+          padding: 12px 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .search-form {
+          flex: 0 1 230px;
+          min-width: 0;
+          height: 40px;
+        }
+
+        .search-form button {
+          flex-basis: 76px;
+        }
+
+        .hero-content {
+          width: min(100% - 40px, 600px);
+          padding: 72px 0 88px;
+        }
+
+        .hero {
+          min-height: 760px;
+          min-height: max(100svh, 760px);
+          background-position: 55% center;
+        }
+
+        .section {
+          width: min(100% - 40px, 600px);
+          padding: 70px 0;
+        }
+
+        .skill-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+
+        .skill-card {
+          min-height: auto;
+          padding: 26px 22px;
+        }
+
+        .project-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .navigation {
+          flex-wrap: wrap;
+          padding: 14px 0;
+        }
+
+        .brand {
+          margin-right: auto;
+        }
+
+        .search-form {
+          order: 2;
+          flex-basis: 100%;
+        }
+
+        .menu-toggle {
+          margin-left: 0;
+        }
+
+        .nav-links {
+          top: 72px;
+        }
+
+        .hero {
+          min-height: max(100svh, 730px);
+        }
+
+        .hero-content {
+          padding: 65px 0 90px;
+        }
+
+        h1 {
+          font-size: clamp(46px, 12vw, 58px);
+        }
+
+        .hero-copy {
+          font-size: 15px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navigationLinks = document.querySelectorAll(".nav-links a");
+        const searchForm = document.querySelector(".search-form");
+        const searchInput = document.querySelector("#site-search");
+        const searchStatus = document.querySelector("#search-status");
+
+        menuToggle.addEventListener("click", () => {
+          const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+          menuToggle.setAttribute("aria-expanded", String(!isOpen));
+          menuToggle.setAttribute("aria-label", isOpen ? "Buka navigasi" : "Tutup navigasi");
+          document.body.classList.toggle("menu-open", !isOpen);
+        });
+
+        navigationLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            document.body.classList.remove("menu-open");
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Buka navigasi");
+          });
+        });
+
+        searchForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const query = searchInput.value.trim().toLocaleLowerCase("id");
+          if (!query) {
+            searchStatus.textContent = "Masukkan kata yang ingin dicari.";
+            searchInput.focus();
+            return;
+          }
+
+          const matchingSection = Array.from(document.querySelectorAll("main section")).find((section) =>
+            section.textContent.toLocaleLowerCase("id").includes(query),
+          );
+
+          if (matchingSection) {
+            searchStatus.textContent = `Menampilkan bagian ${matchingSection.getAttribute("aria-label") || matchingSection.id}.`;
+            matchingSection.scrollIntoView({ behavior: "smooth" });
+          } else {
+            searchStatus.textContent = `Tidak ditemukan: ${searchInput.value.trim()}.`;
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <main>
+      <section class="hero" id="home" aria-label="Beranda">
+        <header class="site-header">
+          <nav class="navigation" aria-label="Navigasi utama">
+            <a class="brand" href="#home" aria-label="GazaAR, beranda">saverio</a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Buka navigasi">
+              <span></span><span></span>
+            </button>
+            <div class="nav-links" id="primary-menu">
+              <a href="#home">HOME</a>
+              <a href="#about">ABOUT</a>
+              <a href="#project">PROJECT</a>
+              <a href="#contact">CONTACT</a>
+            </div>
+            <form class="search-form" role="search">
+              <label class="visually-hidden" for="site-search">Cari isi halaman</label>
+              <input id="site-search" type="search" />
+              <button type="submit">Search</button>
+            </form>
+            <p class="visually-hidden" id="search-status" role="status" aria-live="polite"></p>
+          </nav>
+        </header>
+
+        <div class="hero-content">
+          <h1>Welcome to<br />portofolio<br />Website</h1>
+          <p class="hero-copy">
+           yoooo kenalin nama aku muhammad saverio azkazachary sahilin kalian bisa panggil aku azka.<br />
+            Aku lahir di samarinda, kalimantan timur pada 18 januari 2012,<br />
+           <br />
+       dan ini adalah portofolioku,aku umur nya 12 tahun dan aku suka memancing.
+          </p>
+          <a class="project-button" href="#project">See Project!</a>
+        </div>
+      </section>
+
+      <section class="section" id="about" aria-label="Tentang dan keterampilan">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skill-grid">
+          <article class="skill-card">
+            <h3>Web Design</h3>
+            <p>Membuat tampilan website yang menarik, modern, dan nyaman dilihat oleh pengguna.</p>
+          </article>
+          <article class="skill-card">
+            <h3>HTML &amp; CSS</h3>
+            <p>Menyusun struktur web yang rapi dan menghiasnya menggunakan style CSS modern.</p>
+          </article>
+          <article class="skill-card">
+            <h3>Coding</h3>
+            <p>Suka belajar hal baru di dunia teknologi dan mengembangkan logika pemrograman.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section project-section" id="project" aria-label="Proyek pilihan">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="project-grid">
+          <article class="project-card">
+            <h3>Company Profile Page</h3>
+            <p>Website profil pribadi yang berisi informasi tentang biodata dan keahlianku.</p>
+          </article>
+          <article class="project-card">
+            <h3>My Portfolio</h3>
+            <p>Kumpulan hasil karya dan project pemrograman yang pernah aku buat.</p>
+          </article>
+        </div>
+      </section>
+    </main>
